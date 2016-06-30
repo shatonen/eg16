@@ -1,0 +1,22 @@
+package IoT;
+
+message IoTcurtain{
+  required string name=1;
+  required string type=2;
+  optional string ip=3;
+  optional string port=4;
+  optional string action=5;
+  optional string level=6;
+}
+
+message IoTlights {
+  required string name=1;
+  required string type=2;
+  optional string ip=3;
+  optional string port=4;
+  required string action=5;
+  optional int32 brightness=6;
+  optional double transition=7;
+}
+
+
