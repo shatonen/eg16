@@ -1,0 +1,20 @@
+message IoT {
+  required string name=1;
+  required string type=2;
+  required string ip=3;
+  required string port=4;
+  required string action=5;
+  required string level=6;
+}
+
+
+message ControlIoT {
+  enum MessagesCodes {
+    UNKNOWN = 1;
+    CONFIGURE = 99; 
+  }
+  required MessagesCodes code = 1;
+  repeated IoT data = 2;
+}
+
+
