@@ -6,7 +6,7 @@ Automated lights and curtains based on network traffic
 NOTE: Running controllers or sniffer, the Google Protobuf .proto -files need to be converted.
 "protobuf --python_out=. <name>.proto"
 
-Running:
+## Running:
 
 (Addresses and ports need to be specified if not running in the same environment as I do...)
 
@@ -25,7 +25,7 @@ Sniffer: (Scapy requires sudo rights to monitor network traffic)
 sudo python sniffer.py --sniff --ccast --iface wlan2
 
 
-Wiring Edison and the stepper motor driver board:
+## Wiring Edison and the stepper motor driver board:
 
 IN1 -> 3
 
@@ -37,5 +37,5 @@ IN4 -> 9
 
 GND -> Digital GND
 
-+ -> 5V
+plus -> 5V
 
