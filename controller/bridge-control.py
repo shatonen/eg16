@@ -81,29 +81,18 @@ def server(bridge,sock):
 
 def main():
   
-  # Add signal handler
-  #  signal.signal(signal.SIGINT, signal_handler)
 
 
   parser = argparse.ArgumentParser(description='Hue Bridge Control')
   parser.add_argument('--addr',  action='store', default='192.168.100.1', help='Server IP')
   parser.add_argument('--port',  action='store', type=int, default='14001', help='Server Port')
-
-#  parser.add_argument('--brport', action='store', type=int, default='15005', help='Hue Bridge IP')
   parser.add_argument('--bridge', dest='bridgeIP', action='store', default='192.168.100.50', help='Hue Bridge IP')
 
-#  parser.add_argument('--add', dest='action', action='store_true',  help='Action: add flow')
-#
   parser.add_argument('--off', action='store_true', help='Turn off lights.')
   parser.add_argument('--on', action='store_true', help='Turn on ligths.')
   parser.add_argument('--bri', type=int, help='Set brightness.')
-#  parser.add_argument('--proto', dest='proto', action='store', default='UDP', help='Protocol: ICMP/TCP/UDP.')
-#  parser.add_argument('--sport', dest='srcPort', action='store', help='TCP/UDP src port.')
-#  parser.add_argument('--dport', dest='dstPort', action='store', help='TCP/UDP dst port.')
-#  parser.add_argument('--delete', dest='ruleId', action='store',  help='Action: delete RuleID')
 
   args = parser.parse_args()
-#  print args
 
   try:
     sock=socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
@@ -116,7 +105,6 @@ def main():
     exit(1)
 
 
-#  bridge=connect_br(args.bridgeIP)
 
   if args.off:
     print "Turning lights off."
@@ -132,16 +120,6 @@ def main():
 
   bridge=phue.Bridge(args.bridgeIP)		 	
   bridge.connect()
-#  try:
-#    print "Connecting Hue bridge.."
-#print "Fake bridge connected"
-
-#    bridge=connect_br(args.bridgeIP)
-#bridge="fake"
-#  except Exception as e:
-#    print "Connecting to bridge failed: "+str(e)
-#    sock.close()
-#    sys.exit(1)
 
   try:
     print "Starting server..."
@@ -156,23 +134,6 @@ def main():
     print "Closing server..."
     sock.close()
     sys.exit(0)
-
-#    print "Adding flows..."
-#    if not args.srcAddr or not args.dstAddr:
-#      print "Missing source or destination!"
-#      sys.exit(1)
-#
-#    # Add ARP between hosts
-#    if args.arp:
-#      command1 = "curl -X POST -d '{"
-#      command2 = "curl -X POST -d '{"
-##
-#      command1 += ("\"src-ip\":\"%s/32\"," % (args.srcAddr))
-#      command2 += ("\"dst-ip\":\"%s/32\"," % (args.srcAddr))
-#
-#      command1+= ("\"dst-ip\":\"%s/32\"," % (args.dstAddr))
-#      command2 +=("\"src-ip\":\"%s/32\"," % (args.dstAddr))
-
 
 
 
